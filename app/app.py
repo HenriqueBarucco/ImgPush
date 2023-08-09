@@ -217,7 +217,7 @@ def upload_image():
     if error:
         return jsonify(error=error), 400
 
-    return jsonify(filename=output_filename)
+    return jsonify(filename="https://images.henriquebarucco.com.br/"+output_filename)
 
 
 @app.route("/<string:filename>")
