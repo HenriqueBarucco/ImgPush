@@ -147,10 +147,25 @@ def _resize_image(path, width, height):
 @app.route("/", methods=["GET"])
 def root():
     return """
-<form action="/" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" id="file">
-    <input type="submit" value="Upload" name="submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload de Arquivo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="container">
+        <h1 class="text-center">Upload de Arquivo</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Selecione um arquivo:</label>
+                <input type="file" class="form-control-file" name="file" id="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
 """
 
 
@@ -217,7 +232,7 @@ def upload_image():
     if error:
         return jsonify(error=error), 400
 
-    return jsonify(filename="https://images.henriquebarucco.com.br/"+output_filename)
+    return jsonify(filename=settings.API_URL+output_filename)
 
 
 @app.route("/<string:filename>")

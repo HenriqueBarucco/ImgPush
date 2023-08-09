@@ -3,11 +3,14 @@ FROM python:3.6-slim
 RUN apt-get update && \
     apt-get install -y \
     libmagickwand-dev curl \
-    nginx
+    nginx \
+    build-essential
 
 COPY requirements.txt .
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
+
+RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 

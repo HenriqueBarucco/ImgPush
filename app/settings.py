@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 IMAGES_DIR = "/images/"
 CACHE_DIR = "/cache/"
@@ -11,6 +14,7 @@ NAME_STRATEGY = "randomstr"
 MAX_TMP_FILE_AGE = 5 * 60
 RESIZE_TIMEOUT = 5
 NUDE_FILTER_MAX_THRESHOLD = None
+API_URL = os.getenv("API_URL")
 
 VALID_SIZES = []
 
